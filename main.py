@@ -27,6 +27,24 @@ class Student:
       else:
           return 'Ошибка'
       
+    def __lt__(self, other):
+        return self.average_grade() < other.average_grade()
+
+    def __le__(self, other):
+        return self.average_grade() <= other.average_grade()
+
+    def __eq__(self, other):
+        return self.average_grade() == other.average_grade()
+
+    def __ne__(self, other):
+        return self.average_grade() != other.average_grade()
+
+    def __gt__(self, other):
+        return self.average_grade() > other.average_grade()
+
+    def __ge__(self, other):
+        return self.average_grade() >= other.average_grade()
+      
     def __str__(self):
       average_grade = sum(sum(grades) for grades in self.grades.values()) / len(self.grades.values()) if self.grades else 0
       in_progress_courses = ', '.join(self.courses_in_progress)
@@ -71,6 +89,25 @@ class Lecturer(Mentor):
           return sum(total_grades) / len(total_grades)
       else:
           return 0
+    
+    def __lt__(self, other):
+        return self.average_grade() < other.average_grade()
+
+    def __le__(self, other):
+        return self.average_grade() <= other.average_grade()
+
+    def __eq__(self, other):
+        return self.average_grade() == other.average_grade()
+
+    def __ne__(self, other):
+        return self.average_grade() != other.average_grade()
+
+    def __gt__(self, other):
+        return self.average_grade() > other.average_grade()
+
+    def __ge__(self, other):
+        return self.average_grade() >= other.average_grade()
+    
     def __str__(self):
       average_grade = sum(sum(grades) for grades in self.grades.values()) / len(self.grades.values()) if self.grades else 0
       return f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.average_grade()}"
