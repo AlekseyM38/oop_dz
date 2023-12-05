@@ -75,6 +75,35 @@ class Lecturer(Mentor):
       average_grade = sum(sum(grades) for grades in self.grades.values()) / len(self.grades.values()) if self.grades else 0
       return f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.average_grade()}"
     
+# Создание экземпляров классов
+some_reviewer_1 = Reviewer('Михаил', 'Светлов')
+some_reviewer_2 = Reviewer('Олег', 'Петров')
 
+some_lecturer_1 = Lecturer('Иван', 'Белов')
+some_lecturer_2 = Lecturer('Марго', 'Васильева')
+some_lecturer_1.grades = {'Python': [9, 8, 10]} 
+some_lecturer_2.grades = {'Git': [7, 8, 9]}  
+
+some_student_1 = Student('Колян', 'Изенштейн', 'your_gender')
+some_student_1.grades = {'Python': [7, 8, 9]}  
+some_student_1.courses_in_progress = ['Python', 'Git']
+some_student_1.finished_courses = ['Введение в программирование']
+
+some_student_2 = Student('Ксюша', 'Раппопорт', 'your_gender')
+some_student_2.grades = {'Git': [10, 9, 8]}  
+some_student_2.courses_in_progress = ['Git', 'JavaScript']
+some_student_2.finished_courses = ['Алгоритмы и структуры данных']
+
+print('###### Ревизоры ######')
+print(some_reviewer_1)
+print(some_reviewer_2)
+print()
+print('###### Лекторы ######')
+print(some_lecturer_1)
+print(some_lecturer_2)
+print()
+print('###### Студенты ######')
+print(some_student_1)
+print(some_student_2)
     
 
