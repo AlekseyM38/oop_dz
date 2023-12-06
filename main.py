@@ -112,6 +112,27 @@ class Lecturer(Mentor):
       average_grade = sum(sum(grades) for grades in self.grades.values()) / len(self.grades.values()) if self.grades else 0
       return f"Имя: {self.name}\nФамилия: {self.surname}\nСредняя оценка за лекции: {self.average_grade()}"
     
+def calc_students_average(students_list, course):
+    total_sum = 0
+    total_count = 0
+    for student in students_list:
+        if course in student.grades:
+            total_sum += sum(student.grades[course])
+            total_count += len(student.grades[course])
+
+    return total_sum / total_count if total_count > 0 else 0
+
+
+def calc_lecturers_average(lecturers_list, course):
+    total_sum = 0
+    total_count = 0
+    for lecturer in lecturers_list:
+        if course in lecturer.grades:
+            total_sum += sum(lecturer.grades[course])
+            total_count += len(lecturer.grades[course])
+
+    return total_sum / total_count if total_count > 0 else 0
+    
 # Создание экземпляров классов
 some_reviewer_1 = Reviewer('Михаил', 'Светлов')
 some_reviewer_2 = Reviewer('Олег', 'Петров')
@@ -131,6 +152,12 @@ some_student_2.grades = {'Git': [10, 9, 8]}
 some_student_2.courses_in_progress = ['Git', 'JavaScript']
 some_student_2.finished_courses = ['Алгоритмы и структуры данных']
 
+students_list = []
+lecturers_list = []
+students_list.extend([some_student_1, some_student_2])
+lecturers_list.extend([some_lecturer_1, some_lecturer_2])
+
+
 print('###### Ревизоры ######')
 print(some_reviewer_1)
 print(some_reviewer_2)
@@ -142,5 +169,12 @@ print()
 print('###### Студенты ######')
 print(some_student_1)
 print(some_student_2)
-    
+print()    
 
+print("Студенты:")
+for student in students_list:
+    print(student)
+
+print("\nПреподаватели:")
+for lecturer in lecturers_list:
+    print(lecturer)
